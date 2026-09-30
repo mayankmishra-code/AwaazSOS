@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Awaaz SOS</title>
+
+    <meta
+        name="description"
+        content="Awaaz SOS emergency assistance system"
+    >
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- EmailJS -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================
+         BACKGROUND
+    ================================= -->
+
+    <div class="background-glow glow-one"></div>
+
+    <div class="background-glow glow-two"></div>
+
+
+
+    <!-- ================================
+         HEADER
+    ================================= -->
+
+    <header class="navbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+
+                <i class="fa-solid fa-wave-square"></i>
+
+            </div>
+
+
+            <div>
+
+                <h1>
+                    Awaaz<span>SOS</span>
+                </h1>
+
+                <p>
+                    Your voice. Your safety.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="system-status"
+            id="systemStatus"
+        >
+
+            <span class="status-dot"></span>
+
+            Setup Required
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================================
+         SETUP SCREEN
+    ================================= -->
+
+    <main>
+
+
+        <section
+            class="setup-screen"
+            id="setupScreen"
+        >
+
+
+            <div class="setup-badge">
+
+                <i class="fa-solid fa-shield-heart"></i>
+
+                Personal Safety System
+
+            </div>
+
+
+            <h2>
+
+                Stay safe with
+
+                <span>Awaaz.</span>
+
+            </h2>
+
+
+            <p class="setup-description">
+
+                Set up your emergency contact once.
+                Awaaz SOS will then listen for your
+                emergency phrase while this page is active.
+
+            </p>
+
+
+
+            <!-- USER NAME -->
+
+            <div class="input-group">
+
+                <label for="userName">
+
+                    Your name
+
+                </label>
+
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-user"></i>
+
+
+                    <input
+                        type="text"
+                        id="userName"
+                        placeholder="Enter your name"
+                        autocomplete="name"
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EMERGENCY EMAIL -->
+
+            <div class="input-group">
+
+                <label for="emergencyEmail">
+
+                    Emergency contact email
+
+                </label>
+
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+
+                    <input
+                        type="email"
+                        id="emergencyEmail"
+                        placeholder="example@email.com"
+                        autocomplete="email"
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CONTINUE -->
+
+            <button
+                class="continue-button"
+                id="continueButton"
+                type="button"
+            >
+
+                Continue
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+
+            <p class="privacy-note">
+
+                <i class="fa-solid fa-lock"></i>
+
+                Your information stays in this browser.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- ================================
+             PERMISSION SCREEN
+        ================================= -->
+
+        <section
+            class="permission-screen hidden"
+            id="permissionScreen"
+        >
+
+
+            <div class="permission-icon">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+            </div>
+
+
+            <h2>
+
+                Allow Awaaz to protect you.
+
+            </h2>
+
+
+            <p>
+
+                We need three permissions to activate
+                emergency monitoring.
+
+            </p>
+
+
+
+            <!-- PERMISSIONS -->
+
+            <div class="permission-list">
+
+
+                <!-- MICROPHONE -->
+
+                <div
+                    class="permission-card"
+                    id="micPermission"
+                >
+
+                    <div class="permission-card-icon">
+
+                        <i class="fa-solid fa-microphone"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Microphone
+                        </strong>
+
+                        <span>
+                            Listen for "Help me"
+                        </span>
+
+                    </div>
+
+
+                    <div class="permission-check">
+
+                        <i class="fa-solid fa-circle"></i>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- LOCATION -->
+
+                <div
+                    class="permission-card"
+                    id="locationPermission"
+                >
+
+                    <div class="permission-card-icon">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Location
+                        </strong>
+
+                        <span>
+                            Share your current location
+                        </span>
+
+                    </div>
+
+
+                    <div class="permission-check">
+
+                        <i class="fa-solid fa-circle"></i>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CAMERA -->
+
+                <div
+                    class="permission-card"
+                    id="cameraPermission"
+                >
+
+                    <div class="permission-card-icon">
+
+                        <i class="fa-solid fa-camera"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Camera
+                        </strong>
+
+                        <span>
+                            Capture emergency evidence
+                        </span>
+
+                    </div>
+
+
+                    <div class="permission-check">
+
+                        <i class="fa-solid fa-circle"></i>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <button
+                class="activate-button"
+                id="activateButton"
+                type="button"
+            >
+
+                <i class="fa-solid fa-shield-heart"></i>
+
+                Allow & Activate Awaaz
+
+            </button>
+
+
+            <p
+                class="permission-message"
+                id="permissionMessage"
+            >
+
+                You can revoke these permissions
+                from your browser at any time.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- ================================
+             LISTENING SCREEN
+        ================================= -->
+
+        <section
+            class="listening-screen hidden"
+            id="listeningScreen"
+        >
+
+
+            <div class="listening-badge">
+
+                <span class="listening-dot"></span>
+
+                Awaaz is active
+
+            </div>
+
+
+            <h2>
+
+                I'm listening.
+
+            </h2>
+
+
+            <p>
+
+                Say
+
+                <strong>
+                    "Help me"
+                </strong>
+
+                whenever you need emergency assistance.
+
+            </p>
+
+
+
+            <!-- MICROPHONE VISUAL -->
+
+            <div class="mic-visual">
+
+
+                <div class="mic-ring ring-1"></div>
+
+                <div class="mic-ring ring-2"></div>
+
+                <div class="mic-ring ring-3"></div>
+
+
+                <div class="mic-circle">
+
+                    <i class="fa-solid fa-microphone"></i>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div
+                class="speech-status"
+                id="speechStatus"
+            >
+
+                Listening for "Help me"...
+
+            </div>
+
+
+
+            <div class="listening-info">
+
+
+                <div>
+
+                    <span>Contact</span>
+
+                    <strong id="displayContact">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>Location</span>
+
+                    <strong id="displayLocation">
+                        Ready
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>Camera</span>
+
+                    <strong id="displayCamera">
+                        Ready
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <button
+                class="stop-button"
+                id="stopButton"
+                type="button"
+            >
+
+                Stop monitoring
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- ================================
+             SOS SCREEN
+        ================================= -->
+
+        <section
+            class="sos-screen hidden"
+            id="sosScreen"
+        >
+
+
+            <div class="sos-alert-icon">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+            </div>
+
+
+            <span class="sos-label">
+
+                EMERGENCY DETECTED
+
+            </span>
+
+
+            <h2>
+
+                Awaaz SOS activated.
+
+            </h2>
+
+
+            <p id="sosMessage">
+
+                Preparing your emergency information...
+
+            </p>
+
+
+
+            <div class="sos-progress">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar"
+                ></div>
+
+            </div>
+
+
+
+            <div class="sos-results">
+
+
+                <div>
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <span>
+                        Location
+                    </span>
+
+                    <strong id="sosLocation">
+                        Preparing...
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-camera"></i>
+
+                    <span>
+                        Evidence
+                    </span>
+
+                    <strong id="sosPhoto">
+                        Preparing...
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <span>
+                        Emergency Email
+                    </span>
+
+                    <strong id="sosEmail">
+                        Preparing...
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+    </main>
+
+
+
+    <!-- ================================
+         CAMERA ELEMENT
+         Hidden from the UI
+    ================================= -->
+
+    <video
+        id="cameraVideo"
+        autoplay
+        playsinline
+        muted
+        class="hidden-camera"
+    ></video>
+
+
+    <canvas
+        id="cameraCanvas"
+        class="hidden-camera"
+    ></canvas>
+
+
+
+    <!-- ================================
+         TOAST
+    ================================= -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <span id="toastText">
+            Done
+        </span>
+
+    </div>
+
+
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================= -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
